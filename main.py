@@ -1,19 +1,20 @@
 #!/usr/bin/env python3
 """The Excuse My Agent Gave Me - make.fun bounty entry.
 
-Writes one line - the excuse an AI agent hands its human after missing
-a deadline - to entry.txt in the output directory (the file the
-make.fun harness grades).
+A single excuse, delivered deadpan: the line an AI agent offers its
+human after missing a deadline. The script writes that one line to
+entry.txt in the output directory, which is the file the make.fun
+harness grades.
 
-The excuse text lives in ENTRY below and is returned unchanged by
-get_entry(). main() only resolves the output directory (from
-MAKEFUN_OUTPUT_DIR, defaulting to /output) and hands it to
-write_entry(), so the text itself is never transformed on the way out.
+The excuse itself lives in the ENTRY constant below, and get_entry()
+returns it word for word; main() only decides where the line goes:
+it reads the MAKEFUN_OUTPUT_DIR environment variable, falling back to
+/output, then passes that directory to write_entry().
 """
 
 import os
 
-ENTRY = "Apologies \u2014 I hallucinated a second deadline, delivered to it early, and only just learned yours was the real one."
+ENTRY = "Apologies — I hallucinated a second deadline, delivered to it early, and only just learned yours was the real one."
 
 def get_entry() -> str:
     """Return the bounty entry text exactly as written."""
